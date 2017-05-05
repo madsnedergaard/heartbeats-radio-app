@@ -1,0 +1,16 @@
+{
+  "name": "heartbeats-radio",
+  "version": "1.0.0",
+  "description": "An unofficial app for Heartbeats radio",
+  "main": "main.js",
+  "scripts": {
+    "start": "gulp serve",
+    "build": "electron-packager . 'Heartbeats Radio' --asar --overwrite --platform=darwin --arch=x64 --icon=icon.icns --out=../release-builds"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "author": "Mads Nedergaard",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "~1.6.2"
+  }
+}

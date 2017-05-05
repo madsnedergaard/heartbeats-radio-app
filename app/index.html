@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Heartbeats Radio</title>
+  </head>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      font-family: sans-serif;
+      padding: 0 1em;
+      -webkit-user-select: none;
+      -webkit-app-region: drag;
+      height: 100%;
+      animation: fadein 0.5s;
+    }
+    .logo {
+      background: transparent url("logo.png") center center no-repeat;
+      background-size: contain;
+      height: 99px;
+    }
+    .logo p {
+      font-size: .8em;
+      padding-top: 80px;
+    }
+    .player {
+      margin-top: 2em;
+    }
+    .button {
+      padding: 12px 15px;
+      border: 2px solid #fff;
+      display: inline-block;
+      text-transform: uppercase;
+      background-color: transparent;
+      font-weight: bold;
+      cursor: pointer;
+      color: #fff;
+      outline: 0;
+      width: 90px;
+    }
+    .play-button {
+     background: transparent url("play.png") 5% center no-repeat;
+     padding-left: 35px;
+     -webkit-background-size: 30px;
+     background-size: 30px;
+    }
+    .play-button.playing {
+     background-image: url("pause.png");
+    }
+    footer {
+      position: fixed;
+      font-style: italic;
+      font-size: .7em;
+      text-align: center;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    @keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  </style>
+  <body>
+    <div class="logo">
+    </div>
+    
+    <div class="player">
+      <button class="button play-button">Play</button>
+      <audio id="audioplayer" src="http://airtime.heartbeats.djj.dk:8000/320k"></audio>
+    </div>
+    <footer>
+      <!-- <p>This app is not affiliated with Heartbeats in any way</p> -->
+    </footer>
+  </body>
+  <script>
+    require('./renderer.js')
+  </script>
+</html>
