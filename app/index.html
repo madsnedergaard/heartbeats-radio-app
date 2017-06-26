@@ -25,6 +25,10 @@
       font-size: .8em;
       padding-top: 80px;
     }
+
+    .hidden {
+      display: none;
+    }
     .player {
       margin-top: 2em;
     }
@@ -66,12 +70,20 @@
     opacity: 1;
   }
 }
+  @keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
   </style>
   <body>
     <div class="logo">
     </div>
-    
-    <div class="player">
+    <p class="offline-message hidden">No internet connection</p>    
+    <div class="player hidden">
       <button class="button play-button">Play</button>
       <audio id="audioplayer" src="http://airtime.heartbeats.djj.dk:8000/320k"></audio>
     </div>
@@ -79,6 +91,7 @@
       <!-- <p>This app is not affiliated with Heartbeats in any way</p> -->
     </footer>
   </body>
+<script>require('electron-connect').client.create()</script>
   <script>
     require('./renderer.js')
   </script>
