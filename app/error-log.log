@@ -1,0 +1,9 @@
+/Users/madsnedergaard/Sites/personal/heartbeats-app/node_modules/electron-connect/lib/client.js:27 [2017-05-13T08:22:41.779Z] [electron-connect] [client: 1] connected server
+/Users/madsnedergaard/Sites/personal/heartbeats-app/app/renderer.js:20 Play
+/Users/madsnedergaard/Sites/personal/heartbeats-app/app/renderer.js:12 Playing
+/Users/madsnedergaard/Sites/personal/heartbeats-app/app/renderer.js:12 Playing
+/Users/madsnedergaard/Sites/personal/heartbeats-app/app/renderer.js:32 stalled
+/Users/madsnedergaard/Sites/personal/heartbeats-app/app/renderer.js:32 stalled
+/Users/madsnedergaard/Sites/personal/heartbeats-app/app/renderer.js:36 error: 
+/Users/madsnedergaard/Sites/personal/heartbeats-app/app/renderer.js:37 Event {isTrusted: true, type: "error", target: audio#audioplayer, currentTarget: audio#audioplayer, eventPhase: 2…}
+/Users/madsnedergaard/Sites/personal/heartbeats-app/app/renderer.js:16 Pause

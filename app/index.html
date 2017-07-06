@@ -29,10 +29,39 @@
     .hidden {
       display: none;
     }
-    .player {
+
+    h2 {
+      text-transform: uppercase;
+      font-size: calc(13px + 0.4vw * 4.5);
+    }
+    h2:before {
+    content: url(Arrow_Left_Top.png);
+    position: relative;
+    top: 10px;
+        display: inline-block;
+    vertical-align: -5%;
+    transform: scale(0.8);
+    right: 5px;
+  }
+    h2:after {
+    content: url(Arrow_Right_Top.png);
+    position: relative;
+    top: 10px;
+        display: inline-block;
+    vertical-align: -5%;
+    transform: scale(0.8);
+    left: 5px;
+  }
+
+  h3 {
+    color: #948d8d;
+    text-transform: uppercase;
+  }
+
+/*    .player {
       margin-top: 2em;
     }
-    .button {
+*/    .button {
       padding: 12px 15px;
       border: 2px solid #fff;
       display: inline-block;
@@ -42,16 +71,29 @@
       cursor: pointer;
       color: #fff;
       outline: 0;
-      width: 90px;
+      width: 125px;
     }
+    .button.selected {
+      background-color: #fff;
+      color: #000;
+    }
+
     .play-button {
      background: transparent url("play.png") 5% center no-repeat;
      padding-left: 35px;
      -webkit-background-size: 30px;
      background-size: 30px;
+     opacity: 1;
+     transition: opacity .5s ease-in-out;
     }
     .play-button.playing {
      background-image: url("pause.png");
+    }
+    .play-button:disabled {
+      opacity: 0;
+    }
+    .play-button:disabled:hover {
+      cursor: default;
     }
     footer {
       position: fixed;
@@ -78,20 +120,42 @@
     opacity: 0;
   }
 }
+.episodes {
+
+}
+
+.list .item {
+  display: block;
+  margin: 5px auto;
+  width: auto;
+  min-width: 280px;
+}
+
+.episode-list {
+  text-align: left;
+  margin: 0 auto;
+}
   </style>
   <body>
-    <div class="logo">
-    </div>
+    <div class="logo"></div>
     <p class="offline-message hidden">No internet connection</p>    
-    <div class="player hidden">
-      <button class="button play-button">Play</button>
-      <audio id="audioplayer" src="http://airtime.heartbeats.djj.dk:8000/320k"></audio>
-    </div>
-    <footer>
+<!--     <div class="player hidden">
+      <button class="button play-button">Play radio</button>
+ --><!--       <audio id="audioplayer" src="http://airtime.heartbeats.djj.dk:8000/320k" preload="none"></audio>
+     </div> -->
+<!--     <section class="beats">
+      <h2>Beats</h2>
+      <button class="button">Radio</button>
+      <button class="button">CPH Deep</button>
+      <button class="button">Rope of Dope</button>
+      <button class="button selected">Varme rytmer</button>
+    </section>
+ -->    <footer>
       <!-- <p>This app is not affiliated with Heartbeats in any way</p> -->
     </footer>
   </body>
-<script>require('electron-connect').client.create()</script>
+<!--   <script src="https://unpkg.com/hyperapp"></script>
+ --><script>require('electron-connect').client.create()</script>
   <script>
     require('./renderer.js')
   </script>
