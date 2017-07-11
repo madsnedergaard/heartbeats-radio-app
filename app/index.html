@@ -16,6 +16,18 @@
       height: 100%;
       animation: fadein 0.5s;
     }
+
+    .flexy {
+      display: flex;
+    }
+    .row {
+      flex-direction: row;
+    }
+    .col {
+      flex-direction: column;
+      flex: 1;
+    }
+
     .logo {
       background: transparent url("logo.png") center center no-repeat;
       background-size: contain;
@@ -32,25 +44,25 @@
 
     h2 {
       text-transform: uppercase;
-      font-size: calc(13px + 0.4vw * 4.5);
+      font-size: calc(12px + 0.4vw * 2.5);
     }
     h2:before {
     content: url(Arrow_Left_Top.png);
     position: relative;
     top: 10px;
         display: inline-block;
-    vertical-align: -5%;
-    transform: scale(0.8);
-    right: 5px;
+    vertical-align: 0%;
+    transform: scale(0.6);
+    right: 0px;
   }
     h2:after {
     content: url(Arrow_Right_Top.png);
     position: relative;
     top: 10px;
         display: inline-block;
-    vertical-align: -5%;
-    transform: scale(0.8);
-    left: 5px;
+    vertical-align: 0%;
+    transform: scale(0.6);
+    left: 0px;
   }
 
   h3 {
@@ -125,8 +137,8 @@
 }
 
 .list .item {
-  display: block;
-  margin: 5px auto;
+  display: inline-block;
+  margin: 5px;
   width: auto;
   min-width: 280px;
 }
@@ -138,7 +150,6 @@
   </style>
   <body>
     <div class="logo"></div>
-    <p class="offline-message hidden">No internet connection</p>    
 <!--     <div class="player hidden">
       <button class="button play-button">Play radio</button>
  --><!--       <audio id="audioplayer" src="http://airtime.heartbeats.djj.dk:8000/320k" preload="none"></audio>
