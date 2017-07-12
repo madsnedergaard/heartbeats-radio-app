@@ -15,6 +15,7 @@
       -webkit-app-region: drag;
       height: 100%;
       animation: fadein 0.5s;
+      min-width: 300px;
     }
 
     .flexy {
@@ -28,14 +29,44 @@
       flex: 1;
     }
 
+   @media screen and (max-width: 600px) {
+      .flexy {
+        display: block;
+      }      
+    } 
+
     .logo {
       background: transparent url("logo.png") center center no-repeat;
       background-size: contain;
       height: 99px;
+      position: relative;
+      max-width: 269px;
+      margin: 0 auto;
     }
-    .logo p {
-      font-size: .8em;
-      padding-top: 80px;
+    .logo::before {
+      transition: all .4s ease-in-out;
+      content: "";
+      position: absolute;
+      height: 55px;
+      width: 55px;
+      left: 0;
+      top:22px;
+      background: transparent;      
+    }
+
+    .logo.loading::before {
+      content: "";
+      background: black;
+      opacity: .8;
+      animation: loading 1s infinite ease-in-out alternate;
+    }
+    @keyframes loading {
+      from {
+       opacity: 0.3;
+      }
+      to {
+        opacity: 0.9;
+      }
     }
 
     .hidden {
@@ -49,8 +80,8 @@
     h2:before {
     content: url(Arrow_Left_Top.png);
     position: relative;
-    top: 10px;
-        display: inline-block;
+    top: 12px;
+    display: inline-block;
     vertical-align: 0%;
     transform: scale(0.6);
     right: 0px;
@@ -58,8 +89,8 @@
     h2:after {
     content: url(Arrow_Right_Top.png);
     position: relative;
-    top: 10px;
-        display: inline-block;
+    top: 12px;
+    display: inline-block;
     vertical-align: 0%;
     transform: scale(0.6);
     left: 0px;
@@ -95,14 +126,24 @@
      padding-left: 35px;
      -webkit-background-size: 30px;
      background-size: 30px;
+     max-height: 200px;
      opacity: 1;
-     transition: opacity .5s ease-in-out;
+     transition: 
+      opacity .5s ease-in-out, 
+      color .5s ease-in-out,
+      padding-top .5s ease-in-out,
+      padding-bottom .5s ease-in-out,
+      max-height .5s ease-in-out;
     }
     .play-button.playing {
      background-image: url("pause.png");
     }
     .play-button:disabled {
-      opacity: 0;
+      opacity: 1;
+      max-height: 1px;
+      padding: 0;
+      color: #000;
+      border-color: #000;
     }
     .play-button:disabled:hover {
       cursor: default;
@@ -132,41 +173,22 @@
     opacity: 0;
   }
 }
-.episodes {
-
-}
-
 .list .item {
   display: inline-block;
   margin: 5px;
   width: auto;
   min-width: 280px;
 }
+  @media screen and (max-width: 600px) {
+    .list .item {
+      min-width: 100px;
+    }
+  }
 
-.episode-list {
-  text-align: left;
-  margin: 0 auto;
-}
   </style>
   <body>
-    <div class="logo"></div>
-<!--     <div class="player hidden">
-      <button class="button play-button">Play radio</button>
- --><!--       <audio id="audioplayer" src="http://airtime.heartbeats.djj.dk:8000/320k" preload="none"></audio>
-     </div> -->
-<!--     <section class="beats">
-      <h2>Beats</h2>
-      <button class="button">Radio</button>
-      <button class="button">CPH Deep</button>
-      <button class="button">Rope of Dope</button>
-      <button class="button selected">Varme rytmer</button>
-    </section>
- -->    <footer>
-      <!-- <p>This app is not affiliated with Heartbeats in any way</p> -->
-    </footer>
   </body>
-<!--   <script src="https://unpkg.com/hyperapp"></script>
- --><script>require('electron-connect').client.create()</script>
+  <script>require('electron-connect').client.create()</script>
   <script>
     require('./renderer.js')
   </script>

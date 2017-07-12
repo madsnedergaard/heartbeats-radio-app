@@ -27,6 +27,7 @@ app({
   },
   view: (state, actions) => (
 		h('section', {class: 'app'}, [
+			h('div',  {class: state.isFetching ? 'logo loading' : 'logo'}, null),
 //			h('p', {class: 'offline-message'}, 'No internet connection'),
 			// Play button
 	  	h(
@@ -48,7 +49,6 @@ app({
 				}, 
 				state.playing
 			),
-			h('p', null, state.isFetching? 'loading...' : null),
 			h('section',  {class: 'flexy'}, [
 			// Beats
 			h('div', {class: 'col'}, [
