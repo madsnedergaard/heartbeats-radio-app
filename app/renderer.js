@@ -1,4 +1,6 @@
 'use strict';
+/*jshint esversion: 6 */ 
+
 const { ipcRenderer } = require('electron');
 const { h, app } = require('hyperapp');
 // This file is required by the index.html file and will
@@ -27,6 +29,7 @@ app({
   },
   view: (state, actions) => (
 		h('section', {class: 'app'}, [
+			h('div', {class: state.online ? 'connection-indicator' : 'connection-indicator offline' }, 'No internet connection'),
 			h('div',  {class: state.isFetching ? 'logo loading' : 'logo'}, null),
 //			h('p', {class: 'offline-message'}, 'No internet connection'),
 			// Play button
@@ -61,7 +64,7 @@ app({
 			// Episodes
 			h('div', {class: 'col'}, state.selectedShow ? [
 				h('h2', null, 'Episodes'),
-				h('div', {class: 'list '}, state.podcasts[state.selectedShow].length > 0 ? 
+				h('div', {class: 'list '}, state.podcasts[state.selectedShow] && state.podcasts[state.selectedShow].length > 0 ? 
 					state.podcasts[state.selectedShow].map(p => 
 				 		h('button', {class: p.title === state.selectedEpisode ? 'button item selected' : 'button item',  onclick: () => actions.play(p)}, p.title)
 				 	)
@@ -72,14 +75,16 @@ app({
 		])
   ),
   actions: {
-  	play: (state, actions, podcast) => {
-  		return {
+  	play: (state, actions, podcast) => ({
   		playing: true,
   		source: podcast.source,
   		selectedEpisode: podcast.title
-  	}},
+  	}),
   	toggle: (state, actions) => ({
   		playing: !state.playing
+  	}),
+  	toggleConnectivity: (state, actions) => ({
+  		online: !state.online
   	}),
   	//pause: state => state.playing = false,
   	updatePodcasts: (state, actions, { podcasts, isFetching }) => ({
@@ -102,8 +107,12 @@ app({
   	},
   	selectShow: (state, actions, data, emit) => {
   		actions.updateSelected({selectedShow: data});
-  		if(state.podcasts[data].length === 0) {
-	  		actions.loadEpisodes();
+  		if (state.podcasts.length === 0 ) {
+  			actions.loadShows();
+  		} else {
+	  		if(state.podcasts[data].length === 0) {
+		  		actions.loadEpisodes();
+	  		}  			
   		}
   	},
   	loadShows: (state, actions) => {
@@ -127,11 +136,29 @@ app({
     },
   },
   events: {
-  	loaded: (state, actions) => {
-  		actions.loadShows();
+    init: (state, actions) => {
+  		// On keyboard play-media-key
+			ipcRenderer.on('MediaPlayPause', function () {
+				actions.toggle();
+			});
+			
+  	},
+  	loaded: (state, actions) => {  		
+  		if (navigator.onLine) {
+  			actions.loadShows();
+  			actions.toggleConnectivity();
+  		}
+  		addEventListener('online', () => {
+  			actions.toggleConnectivity(); 
+  			actions.loadShows();
+  		});
+  		addEventListener('offline', () => {
+  			actions.toggleConnectivity();
+  		});
+
   	},
   },
-   // mixins: [Logger]
+    mixins: [Logger]
 });
 
 function cleanString(string) {
@@ -142,11 +169,6 @@ function cleanString(string) {
 		.replace(/&#8217;/g, '\'')
 	;
 	return cleanString;
-}
-var audio = document.getElementById('audioplayer');
-// Initial check to see if its online
-if(navigator.onLine) {
-	console.log('navigator onLine');
 }
 
 // // https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events
@@ -188,7 +210,7 @@ if(navigator.onLine) {
 
 
 window.addEventListener('online',  function(){
-	console.log('online');
+//	console.log('online');
 	// var source = audio.src;
 	// audio.src = '';
 	// audio.src = source;
@@ -197,7 +219,7 @@ window.addEventListener('online',  function(){
 	//beatsWrapper.classList.toggle('hidden');
 });
 window.addEventListener('offline',  function(){
-	console.log('offline');
+	//console.log('offline');
 	// if (!audio.paused) {
 	// 	toggleRadio(audio, playButton); // Stop	
 	// }
@@ -208,10 +230,10 @@ window.addEventListener('offline',  function(){
 
 
 // On keyboard play-media-key
-ipcRenderer.on('MediaPlayPause', function () {
-	var audio = document.getElementById('audioplayer');
-  toggleRadio(audio);
-});
+// ipcRenderer.on('MediaPlayPause', function () {
+// 	var audio = document.getElementById('audioplayer');
+//   toggleRadio(audio);
+// });
 
 
 function toggleRadio(audio) {

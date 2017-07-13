@@ -16,6 +16,7 @@
       height: 100%;
       animation: fadein 0.5s;
       min-width: 300px;
+      padding-bottom: 3em;
     }
 
     .flexy {
@@ -184,11 +185,34 @@
     }
   }
 
+
+  .connection-indicator {
+    background: #948d8d;
+    line-height: 50px;
+    font-size: .8rem;
+    height: 50px;
+    z-index: 2;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: none;
+    transition: all .3s ease-in-out;
+  }
+  .connection-indicator::before {
+    content: "⚡️";
+    margin-right: 5px;
+  }
+
+  .connection-indicator.offline {
+    display: block;
+  }
+
   </style>
   <body>
-  </body>
   <script>require('electron-connect').client.create()</script>
   <script>
     require('./renderer.js')
   </script>
+  </body>
 </html>
