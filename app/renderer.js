@@ -81,7 +81,9 @@ app({
   		selectedEpisode: podcast.title
   	}),
   	toggle: (state, actions) => ({
-  		playing: !state.playing
+      // If there is a source, toggle playing
+      // Otherwise don't change current value
+  		playing: state.source ? !state.playing : state.playing
   	}),
   	toggleConnectivity: (state, actions) => ({
   		online: !state.online
@@ -138,12 +140,12 @@ app({
   events: {
     init: (state, actions) => {
   		// On keyboard play-media-key
+      
+    },
+    loaded: (state, actions) => {     
 			ipcRenderer.on('MediaPlayPause', function () {
 				actions.toggle();
 			});
-			
-  	},
-  	loaded: (state, actions) => {  		
   		if (navigator.onLine) {
   			actions.loadShows();
   			actions.toggleConnectivity();
