@@ -1,4 +1,4 @@
 /design
 node_modules
 /release-builds
-gulpfile.js
+/dist

@@ -1,0 +1,24 @@
+{
+  "name": "heartbeats-radio",
+  "version": "1.0.0",
+  "description": "An unofficial app for Heartbeats radio",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "gulp serve",
+    "release": "electron-packager dist 'Heartbeats Radio' --asar --overwrite --platform=darwin --arch=x64 --icon=icon.icns --out=release-builds",
+    "build": "gulp build"
+  },
+  "repository": "https://github.com/madsnedergaard/heartbeats-radio-app",
+  "author": "Mads Nedergaard",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "~1.6.2",
+    "electron-connect": "^0.6.1",
+    "gulp": "^3.9.1",
+    "gulp-json-modify": "^1.0.2",
+    "gulp-useref": "^3.1.2"
+  },
+  "dependencies": {
+    "hyperapp": "^0.9.3"
+  }
+}
