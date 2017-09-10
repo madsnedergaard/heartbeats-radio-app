@@ -24,9 +24,11 @@ gulp.task('build', function () {
 		.pipe(gulp.dest('dist/images'));
 	gulp.src('app/renderer.js')
 		.pipe(gulp.dest('dist'));
-gulp.src('app/main.js')
+  gulp.src('app/main.js')
 		.pipe(gulp.dest('dist'));
-  gulp.src('package.json')
+  gulp.src('app/touchbar.js')
+		.pipe(gulp.dest('dist'));
+    gulp.src('package.json')
     .pipe(jsonModify({key: 'main', value: 'main.js'}))
     .pipe(gulp.dest('dist'));
   gulp.src('app/index.html')
