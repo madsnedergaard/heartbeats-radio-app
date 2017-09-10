@@ -1,6 +1,8 @@
 
 # The unofficial Heartbeats App
 
+![icon](app-icon.png)
+
 I love Heartbeats, but listening from the website had some drawbacks - thus this app was created.
 
 ## Features
@@ -50,3 +52,5 @@ npm run release
 ---
 
 _This app is not in any way affiliated with Heartbeats - I'm just a huge fan!_
+
+
