@@ -3,7 +3,7 @@
 
 ![icon](app-icon.png)
 
-I love Heartbeats, but listening from the website had some drawbacks - thus this app was created.
+I love [Heartbeats](http://heartbeats.dk/), but listening from the website had some drawbacks - thus this app was created.
 
 ## Features
 
