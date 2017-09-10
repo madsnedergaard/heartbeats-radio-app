@@ -1,4 +1,6 @@
-const {app, BrowserWindow, globalShortcut } = require('electron');
+const {app, BrowserWindow, globalShortcut, TouchBar, ipcMain } = require('electron');
+const { touchBar, touchBarCB } = require('./touchbar');
+
 const path = require('path');
 const url = require('url');
 // Keep a global reference of the window object, if you don't, the window will
