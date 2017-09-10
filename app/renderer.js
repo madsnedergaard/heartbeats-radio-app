@@ -25,7 +25,8 @@ app({
    	selectedEpisode: null,
    	podcasts: {},
    	isFetching: false,
-   	online: false
+   	online: false,
+    time: 0
   },
   view: (state, actions) => (
 		h('section', {class: 'app'}, [
@@ -38,28 +39,31 @@ app({
 	  		{
 	  			class: state.playing ? 'button play-button playing' : 'button play-button', 
 	  			disabled: state.source ? false : true,
-	  			onclick: () => actions.toggle() 
+	  			onclick: () => actions.toggle()
 	  		}, 
-	  		state.playing ? 'Pause' : 'Play'
+	  		state.playing ? 'Pause '+state.time+'%' : 'Play'
 	  	),
 			// Audio element
 			h(
 				'audio', 
 				{
 					src: state.source, 
-					id: 'audioplayer', 
-					onupdate: el => state.playing ? el.play() : el.pause() 
+					id: 'audioplayer',
+          ontimeupdate: el => actions.timerUpdate({time: el.target.currentTime, duration: el.target.duration}),
+					onupdate: el => state.playing ? el.play() : el.pause(),
+
+//                      var percentage = Math.floor(_this.player.currentTime / _this.player.duration * 100);
+
 				}, 
 				state.playing
 			),
 			h('section',  {class: 'flexy'}, [
 			// Beats
 			h('div', {class: 'col'}, [
-				h('h2', {onclick: () => actions.toggle()}, 'Beats'),
-				 h('div', {class: 'list '}, Object.keys(state.podcasts).sort().map(s =>
+				h('h2', null, 'Beats'),
+				h('div', {class: 'list '}, Object.keys(state.podcasts).sort().map(s =>
 				 	h('button', {class: s === state.selectedShow ? 'button item selected' : 'button item',  onclick: () => actions.selectShow(s)}, s)
-				 ))
-
+				)),
 			]),
 			// Episodes
 			h('div', {class: 'col'}, state.selectedShow ? [
@@ -85,6 +89,11 @@ app({
       // Otherwise don't change current value
   		playing: state.source ? !state.playing : state.playing
   	}),
+    }
+  	},
+    timerUpdate: (state, actions, {time, duration}) => ({
+      time: Math.floor(time / duration * 100)
+    }),
   	toggleConnectivity: (state, actions) => ({
   		online: !state.online
   	}),
