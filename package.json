@@ -1,7 +1,7 @@
 {
   "name": "heartbeats-radio",
-  "version": "1.0.0",
-  "description": "An unofficial app for Heartbeats radio",
+  "version": "0.1",
+  "description": "An unofficial app for Heartbeats",
   "main": "app/main.js",
   "scripts": {
     "start": "gulp serve",
