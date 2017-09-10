@@ -5,6 +5,11 @@ I love [Heartbeats](http://heartbeats.dk/), but listening from the website had s
 
 ![Screenshot](screenshot.png)
 
+
+## Get it right here:
+
+Latest release can be [downloaded here](https://github.com/madsnedergaard/heartbeats-app/releases/latest) - download the archive and unzip it.
+
 ## Features
 
 - Support for keyboard media-controls (play/pause)
@@ -16,6 +21,7 @@ I love [Heartbeats](http://heartbeats.dk/), but listening from the website had s
 - Local caching of podcasts
 - Scrobbling
 - Chromecast support
+- Your awesome ideas?
 
 If you want to help out making this app awesome I would love your help! Feel free to contact me or just go crazy with issues and pull requests :)
 
@@ -51,10 +57,9 @@ npm run release
 
 ---
 
+_This app is not in any way affiliated with Heartbeats - I'm just a huge fan!_
+
 <p align="center">
   <img src="app-icon.png">
 </p>
-
-_This app is not in any way affiliated with Heartbeats - I'm just a huge fan!_
-
 
