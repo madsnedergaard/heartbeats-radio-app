@@ -1,9 +1,9 @@
 
 # The unofficial Heartbeats App
 
-![icon](app-icon.png)
+I love [Heartbeats](http://heartbeats.dk/), but listening from the website had some drawbacks - thus this desktop app was created.
 
-I love [Heartbeats](http://heartbeats.dk/), but listening from the website had some drawbacks - thus this app was created.
+![Screenshot](screenshot.png)
 
 ## Features
 
@@ -49,7 +49,7 @@ or create a new release:
 npm run release
 ```
 
----
+![icon](app-icon.png)
 
 _This app is not in any way affiliated with Heartbeats - I'm just a huge fan!_
 
