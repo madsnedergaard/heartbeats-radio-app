@@ -41,7 +41,7 @@ app({
 	  			disabled: state.source ? false : true,
 	  			onclick: () => actions.toggle()
 	  		}, 
-	  		state.playing ? 'Pause '+state.time+'%' : 'Play'
+	  		state.playing ? 'Pause ' + (isNaN(state.time) ? 0 : state.time) +'%' : 'Play'
 	  	),
 			// Audio element
 			h(
@@ -88,9 +88,7 @@ app({
       // If there is a source, toggle playing
       // Otherwise don't change current value
   		playing: state.source ? !state.playing : state.playing
-  	}),
-    }
-  	},
+  	}),    
     timerUpdate: (state, actions, {time, duration}) => ({
       time: Math.floor(time / duration * 100)
     }),
@@ -169,7 +167,7 @@ app({
 
   	},
   },
-    mixins: [Logger]
+    //mixins: [Logger]
 });
 
 function cleanString(string) {
