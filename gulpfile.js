@@ -1,9 +1,8 @@
 'use strict';
 
-var gulp = require('gulp');
 var useref = require('gulp-useref');
 var jsonModify = require('gulp-json-modify');
-
+var gulp = require('gulp');
 var electron = require('electron-connect').server.create();
 
 gulp.task('serve', function () {
@@ -12,10 +11,10 @@ gulp.task('serve', function () {
   electron.start();
 
   // Restart browser process
-  gulp.watch(['main.js', 'renderer.js'], electron.restart);
+  gulp.watch(['app/main.js', 'app/renderer.js', 'app/touchbar.js'], electron.restart);
 
   // Reload renderer process
-  gulp.watch(['index.js', 'index.html'], electron.reload);
+  gulp.watch(['app/index.js', 'app/index.html'], electron.reload);
 });
 
 
