@@ -49,7 +49,11 @@ or create a new release:
 npm run release
 ```
 
-![icon](app-icon.png)
+---
+
+<p align="center">
+  <img src="app-icon.png">
+</p>
 
 _This app is not in any way affiliated with Heartbeats - I'm just a huge fan!_
 
