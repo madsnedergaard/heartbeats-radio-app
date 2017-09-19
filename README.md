@@ -3,7 +3,7 @@
 
 I love [Heartbeats](http://heartbeats.dk/), but listening from the website had some drawbacks - thus this desktop app was created.
 
-![Screenshot](screenshot.png)
+![Screenshot](screen.png)
 
 
 ## Get it right here:
