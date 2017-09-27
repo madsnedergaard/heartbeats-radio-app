@@ -1,7 +1,7 @@
 
 # The unofficial Heartbeats App
 
-**--- WARNING ---**
+**--- WARNING (27/09-17) ---**
 
 Currently not working as Heartbeats have changed their website/feed and it's not yet possible to play any beats.. Hopefully I'll get it working again soon.
 
