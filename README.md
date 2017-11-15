@@ -1,13 +1,6 @@
 
 # The unofficial Heartbeats App
 
-**--- WARNING (27/09-17) ---**
-
-Currently not working as Heartbeats have changed their website/feed and it's not yet possible to play any beats.. Hopefully I'll get it working again soon.
-
-**--- WARNING ---**
-
-
 I love [Heartbeats](http://heartbeats.dk/), but listening from the website had some drawbacks - thus this desktop app was created.
 
 ![Screenshot](screen.png)
@@ -69,4 +62,3 @@ _This app is not in any way affiliated with Heartbeats - I'm just a huge fan!_
 <p align="center">
   <img src="app-icon.png">
 </p>
-

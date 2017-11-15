@@ -1,0 +1,90 @@
+body {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  font-family: sans-serif;
+  padding: 0 1em;
+  user-select: none;
+  -webkit-app-region: drag;
+  height: 100%;
+  animation: fadein 0.5s;
+  min-width: 300px;
+  padding-bottom: 3em;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+  .flexy {
+    display: flex;
+  }
+
+  .row {
+    flex-direction: row;
+  }
+
+@media screen and (max-width: 600px) {
+  .flexy {
+    display: block;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+
+h3 {
+  color: #948d8d;
+  text-transform: uppercase;
+}
+
+
+.play-button {
+  background: transparent url("./images/play.png") 5% center no-repeat;
+  padding-left: 35px;
+  -webkit-background-size: 30px;
+  background-size: 30px;
+  max-height: 200px;
+  opacity: 1;
+  transition: opacity .5s ease-in-out, color .5s ease-in-out, padding-top .5s ease-in-out, padding-bottom .5s ease-in-out, max-height .5s ease-in-out;
+}
+
+.play-button.playing {
+  background-image: url("./images/pause.png");
+}
+
+.play-button:disabled {
+  opacity: 1;
+  max-height: 1px;
+  padding: 0;
+  color: #000;
+  border-color: #000;
+}
+
+.play-button:disabled:hover {
+  cursor: default;
+}
+
+footer {
+  position: fixed;
+  font-style: italic;
+  font-size: .7em;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
