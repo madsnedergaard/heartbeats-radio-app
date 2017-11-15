@@ -1,6 +1,6 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
+  "name": "heartbeats-app",
+  "productName": "Heartbeats App",
   "version": "0.12.0",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "scripts": {
@@ -37,23 +37,13 @@
       "dist/",
       "node_modules/",
       "app.html",
+      "images",
       "main.prod.js",
       "main.prod.js.map",
       "package.json"
     ],
-    "dmg": {
-      "contents": [
-        {
-          "x": 130,
-          "y": 220
-        },
-        {
-          "x": 410,
-          "y": 220,
-          "type": "link",
-          "path": "/Applications"
-        }
-      ]
+    "mac": {
+      "target": "pkg"
     },
     "win": {
       "target": [
@@ -139,7 +129,7 @@
     "cross-spawn": "^5.1.0",
     "css-loader": "^0.28.3",
     "electron": "^1.7.9",
-    "electron-builder": "^19.8.0",
+    "electron-builder": "^19.45.0",
     "electron-devtools-installer": "^2.2.0",
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
