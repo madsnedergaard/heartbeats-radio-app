@@ -4,19 +4,20 @@ import { createStore, applyMiddleware } from 'redux';
 import { connect } from 'react-redux';
 import thunk from 'redux-thunk';
 import Sound from 'react-sound';
+import { ipcRenderer } from 'electron';
 
 import { Logo, OfflineIndicator } from './components/display';
 import { Button, PlayButton } from './components/Button';
 import { List, ListItem } from './components/List';
 import podcastAppReducer from './reducer';
 
-//import {
+// import {
 //  setFetchingStatus
-//} from './actions';
+// } from './actions';
 
 import { fetchSeries, fetchEpisodes, selectSeries, selectEpisode, toggleAudio } from './actions';
 
-const mapStateToProps = (rootState) => {
+const mapStateToProps = rootState => {
   const state = rootState.podcastAppReducer;
   return {
     isFetching: state.isFetching,
@@ -27,8 +28,8 @@ const mapStateToProps = (rootState) => {
     podcasts: state.podcasts,
     series: state.series,
     online: state.online,
-    time: state.time
-  }
+    time: state.time,
+  };
 };
 
 const mapDispatchToProps = {
@@ -36,7 +37,7 @@ const mapDispatchToProps = {
   fetchEpisodes,
   selectSeries,
   selectEpisode,
-  toggleAudio
+  toggleAudio,
 };
 /*
     Wrapper
@@ -57,21 +58,36 @@ class PodcastsPage extends Component {
     if (!this.props.series || Object.keys(this.props.series).length === 0) {
       this.props.fetchSeries();
     }
+    const self = this;
+    ipcRenderer.on('MediaPlayPause', this.onMediaPlayPause);
+  }
+  componentWillUnmount() {
+    ipcRenderer.removeListener('MediaPlayPause', this.onMediaPlayPause);
   }
 
-  _handleSeriesClick = (id) => {
+  onMediaPlayPause = () => {
+    if (this.props.selectedEpisode) {
+      this.props.toggleAudio();
+    }
+  };
+
+  handleSongFinishedPlaying = () => {
+    if (this.props.selectedEpisode) {
+      this.props.toggleAudio();
+    }
+  };
+
+  _handleSeriesClick = id => {
     this.props.selectSeries(id);
     this.props.fetchEpisodes(id);
-    //if (!this.props.series || Object.keys(this.props.series).length === 0) {
+    // if (!this.props.series || Object.keys(this.props.series).length === 0) {
     //  this.props.fetchSeries();
-    //}
-  }
-
+    // }
+  };
 
   _handleEpisodeClick = (id, source) => {
     this.props.selectEpisode(id, source);
-  }
-
+  };
 
   render() {
     const {
@@ -84,6 +100,7 @@ class PodcastsPage extends Component {
       series,
       online,
       time,
+      toggleAudio,
     } = this.props;
 
     return (
@@ -92,15 +109,13 @@ class PodcastsPage extends Component {
           <Logo loading={isFetching} />
           <PlayButton
             playing={isPlaying}
-            disabled={selectedSource ? false : true}
+            disabled={!selectedSource}
             onClick={() => this.props.toggleAudio()}
           >
-          {
-            isPlaying ? `Pause` : 'Play' /*${isNaN(time) ? 0 : time}%*/
-          }
+            {isPlaying ? 'Pause' : 'Play' /* ${isNaN(time) ? 0 : time}%*/}
           </PlayButton>
           <Sound
-            url={ selectedSource || '' }
+            url={selectedSource || ''}
             playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.PAUSED}
             playFromPosition={0 /* in milliseconds */}
             onLoading={this.handleSongLoading}
@@ -110,34 +125,31 @@ class PodcastsPage extends Component {
         </section>
         <section className="flexy">
           <List title="Beats">
-            {
-              series ?
-                series.map(s => (
-                  <ListItem
-                    key={s.id}
-                    selected={this.props.selectedShow === s.id}
-                    onClick={() => this._handleSeriesClick(s.id)}
-                  >
-                    {s.name}
-                  </ListItem>
-                ))
-              : <p>No episodes available</p>
-            }
+            {series ? (
+              series.map(s => (
+                <ListItem
+                  key={s.id}
+                  selected={this.props.selectedShow === s.id}
+                  onClick={() => this._handleSeriesClick(s.id)}
+                >
+                  {s.name}
+                </ListItem>
+              ))
+            ) : (
+              <p>No episodes available</p>
+            )}
           </List>
           <List title="Episodes">
-            {
-              podcasts ?
-                podcasts.map(p => (
-                  <ListItem
-                    key={p.id}
-                    selected={this.props.selectedEpisode === p.id}
-                    onClick={() => this._handleEpisodeClick(p.id, p.meta.audio_file)}
-                    dangerouslySetInnerHTML={{ __html: p.title.rendered }}
-                  >
-                  </ListItem>
+            {podcasts
+              ? podcasts.map(p => (
+                <ListItem
+                  key={p.id}
+                  selected={this.props.selectedEpisode === p.id}
+                  onClick={() => this._handleEpisodeClick(p.id, p.meta.audio_file)}
+                  dangerouslySetInnerHTML={{ __html: p.title.rendered }}
+                />
                 ))
-                : '...'
-            }
+              : '...'}
           </List>
         </section>
         <OfflineIndicator>No internet connection</OfflineIndicator>
@@ -147,8 +159,5 @@ class PodcastsPage extends Component {
 }
 PodcastsPage.propTypes = {};
 
-PodcastsPage = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PodcastsPage);
+PodcastsPage = connect(mapStateToProps, mapDispatchToProps)(PodcastsPage);
 export default PodcastsPage;

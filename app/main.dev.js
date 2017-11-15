@@ -10,7 +10,7 @@
  *
  * @flow
  */
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, globalShortcut } from 'electron';
 import MenuBuilder from './menu';
 
 let mainWindow = null;
@@ -48,6 +48,7 @@ const installExtensions = async () => {
 app.on('window-all-closed', () => {
   // Respect the OSX convention of having the application in memory even
   // after all windows have been closed
+  globalShortcut.unregisterAll();
   if (process.platform !== 'darwin') {
     app.quit();
   }
@@ -64,7 +65,7 @@ app.on('ready', async () => {
     width: 800,
     height: 700,
     backgroundColor: '#000',
-    //titleBarStyle: 'hiddenInset'
+    titleBarStyle: 'hiddenInset'
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
@@ -79,7 +80,15 @@ app.on('ready', async () => {
     mainWindow.focus();
   });
 
+  globalShortcut.register('MediaPlayPause', () => {
+    if (mainWindow) {
+      mainWindow.webContents.send('MediaPlayPause');
+    }
+  });
+
+
   mainWindow.on('closed', () => {
+    globalShortcut.unregisterAll();
     mainWindow = null;
   });
 
