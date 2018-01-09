@@ -60,5 +60,5 @@ npm run release
 _This app is not in any way affiliated with Heartbeats - I'm just a huge fan!_
 
 <p align="center">
-  <img src="app-icon.png">
+  <img src="resources/app-icon.png">
 </p>
