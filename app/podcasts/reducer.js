@@ -11,13 +11,13 @@ import {
 } from './actions';
 
 const initialState = {
-  playing: false,
+  isPlaying: false,
   selectedSource: null,
   selectedShow: null,
   selectedEpisode: null,
   podcasts: [],
   series: [],
-  isFetching: true,
+  isFetching: false,
   online: false,
   time: 0
 };
