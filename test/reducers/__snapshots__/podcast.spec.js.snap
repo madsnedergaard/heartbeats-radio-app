@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Podcast reducer API should start fetching series 1`] = `
+Object {
+  "isFetching": true,
+  "isPlaying": false,
+  "online": false,
+  "podcasts": Array [],
+  "selectedEpisode": null,
+  "selectedShow": null,
+  "selectedSource": null,
+  "series": Array [],
+  "time": 0,
+}
+`;
+
+exports[`Podcast reducer player should select a series 1`] = `
+Object {
+  "isFetching": false,
+  "isPlaying": false,
+  "online": false,
+  "podcasts": Array [],
+  "selectedEpisode": null,
+  "selectedShow": 1,
+  "selectedSource": null,
+  "series": Array [],
+  "time": 0,
+}
+`;
+
+exports[`Podcast reducer player should select episode and start playing 1`] = `
+Object {
+  "isFetching": false,
+  "isPlaying": true,
+  "online": false,
+  "podcasts": Array [],
+  "selectedEpisode": 1,
+  "selectedShow": null,
+  "selectedSource": "source",
+  "series": Array [],
+  "time": 0,
+}
+`;
+
+exports[`Podcast reducer player should toggle audio 1`] = `
+Object {
+  "isFetching": false,
+  "isPlaying": true,
+  "online": false,
+  "podcasts": Array [],
+  "selectedEpisode": null,
+  "selectedShow": null,
+  "selectedSource": null,
+  "series": Array [],
+  "time": 0,
+}
+`;
+
+exports[`Podcast reducer should handle unknown action type 1`] = `
+Object {
+  "isFetching": false,
+  "isPlaying": false,
+  "online": false,
+  "podcasts": Array [],
+  "selectedEpisode": null,
+  "selectedShow": null,
+  "selectedSource": null,
+  "series": Array [],
+  "time": 0,
+}
+`;
