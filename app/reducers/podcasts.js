@@ -8,7 +8,7 @@ import {
   SELECT_SERIES,
   SELECT_EPISODE,
   TOGGLE_AUDIO
-} from './actions';
+} from '../actions/podcasts';
 
 const initialState = {
   isPlaying: false,
@@ -64,7 +64,7 @@ function podcastAppReducer(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        series: action.series //normalizeData(action.series)
+        series: action.series // normalizeData(action.series)
       };
     case FETCHING_SERIES_FAILED:
       // handle error;
@@ -86,7 +86,7 @@ function podcastAppReducer(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        podcasts: action.episodes  //normalizeData(action.series)
+        podcasts: action.episodes  // normalizeData(action.series)
       };
 
     default:

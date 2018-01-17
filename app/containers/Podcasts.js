@@ -6,16 +6,16 @@ import thunk from 'redux-thunk';
 import Sound from 'react-sound';
 import { ipcRenderer } from 'electron';
 
-import { Logo, OfflineIndicator } from './components/display';
-import { Button, PlayButton } from './components/Button';
-import { List, ListItem } from './components/List';
-import podcastAppReducer from './reducer';
+import { Logo, OfflineIndicator } from '../components/display';
+import { Button, PlayButton } from '../components/Button';
+import { List, ListItem } from '../components/List';
+import podcastAppReducer from '../reducers/podcasts';
 
 // import {
 //  setFetchingStatus
 // } from './actions';
 
-import { fetchSeries, fetchEpisodes, selectSeries, selectEpisode, toggleAudio } from './actions';
+import { fetchSeries, fetchEpisodes, selectSeries, selectEpisode, toggleAudio } from '../actions/podcasts';
 
 const mapStateToProps = rootState => {
   const state = rootState.podcastAppReducer;
@@ -112,7 +112,7 @@ class PodcastsPage extends Component {
             disabled={!selectedSource}
             onClick={() => this.props.toggleAudio()}
           >
-            {isPlaying ? 'Pause' : 'Play' /* ${isNaN(time) ? 0 : time}%*/}
+            {isPlaying ? 'Pause' : 'Play' /* ${isNaN(time) ? 0 : time}% */}
           </PlayButton>
           <Sound
             url={selectedSource || ''}
