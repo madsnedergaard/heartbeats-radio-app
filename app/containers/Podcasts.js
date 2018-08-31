@@ -58,7 +58,6 @@ class PodcastsPage extends Component {
     if (!this.props.series || Object.keys(this.props.series).length === 0) {
       this.props.fetchSeries();
     }
-    const self = this;
     ipcRenderer.on('MediaPlayPause', this.onMediaPlayPause);
   }
   componentWillUnmount() {
@@ -107,11 +106,7 @@ class PodcastsPage extends Component {
       <div className="app">
         <section className="header">
           <Logo loading={isFetching} />
-          <PlayButton
-            playing={isPlaying}
-            disabled={!selectedSource}
-            onClick={() => this.props.toggleAudio()}
-          >
+          <PlayButton playing={isPlaying} disabled={!selectedSource} onClick={() => this.props.toggleAudio()}>
             {isPlaying ? 'Pause' : 'Play' /* ${isNaN(time) ? 0 : time}% */}
           </PlayButton>
           <Sound
@@ -127,11 +122,7 @@ class PodcastsPage extends Component {
           <List title="Beats">
             {series ? (
               series.map(s => (
-                <ListItem
-                  key={s.id}
-                  selected={this.props.selectedShow === s.id}
-                  onClick={() => this._handleSeriesClick(s.id)}
-                >
+                <ListItem key={s.id} selected={this.props.selectedShow === s.id} onClick={() => this._handleSeriesClick(s.id)}>
                   {s.name}
                 </ListItem>
               ))
@@ -141,14 +132,16 @@ class PodcastsPage extends Component {
           </List>
           <List title="Episodes">
             {podcasts
-              ? podcasts.map(p => (
-                <ListItem
-                  key={p.id}
-                  selected={this.props.selectedEpisode === p.id}
-                  onClick={() => this._handleEpisodeClick(p.id, p.meta.audio_file)}
-                  dangerouslySetInnerHTML={{ __html: p.title.rendered }}
-                />
-                ))
+              ? podcasts
+                  .reverse()
+                  .map(p => (
+                    <ListItem
+                      key={p.id}
+                      selected={this.props.selectedEpisode === p.id}
+                      onClick={() => this._handleEpisodeClick(p.id, p.meta.audio_file)}
+                      dangerouslySetInnerHTML={{ __html: p.title.rendered }}
+                    />
+                  ))
               : '...'}
           </List>
         </section>
@@ -159,5 +152,8 @@ class PodcastsPage extends Component {
 }
 PodcastsPage.propTypes = {};
 
-PodcastsPage = connect(mapStateToProps, mapDispatchToProps)(PodcastsPage);
+PodcastsPage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PodcastsPage);
 export default PodcastsPage;
