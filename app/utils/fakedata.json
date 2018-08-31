@@ -1,0 +1,102 @@
+{
+  "series": [
+    {
+      "id": 1,
+      "name": "Varme Rytmer"
+    },
+    {
+      "id": 2,
+      "name": "Klub Rolig"
+    },
+    {
+      "id": 3,
+      "name": "Fies Finest"
+    },
+    {
+      "id": 4,
+      "name": "AcidWashed"
+    }
+  ],
+  "episodes": [
+    {
+      "id": 1,
+      "seriesId": 1,
+      "title": {
+        "rendered": "Episode #1"
+      },
+      "meta": {
+        "audio_file": "http://heartbeats.dk/wp-content/uploads/2018/04/20180412_160000_varme-rytmer.mp3"
+      }
+    },
+    {
+      "id": 2,
+      "seriesId": 1,
+      "title": {
+        "rendered": "Episode #2"
+      },
+      "meta": {
+        "audio_file": "https://heartbeats.dk/wp-content/uploads/2018/06/20180614_160000_varme-rytmer.mp3"
+      }
+    },
+    {
+      "id": 3,
+      "seriesId": 2,
+      "title": {
+        "rendered": "Episode #6"
+      },
+      "meta": {
+        "audio_file": "https://heartbeats.dk/podcast/Klubrolig6.mp3"
+      }
+    },
+    {
+      "id": 4,
+      "seriesId": 2,
+      "title": {
+        "rendered": "Episode #7"
+      },
+      "meta": {
+        "audio_file": "https://heartbeats.dk/podcast/Klubrolig7.mp3"
+      }
+    },
+    {
+      "id": 5,
+      "seriesId": 2,
+      "title": {
+        "rendered": "Episode #8"
+      },
+      "meta": {
+        "audio_file": "https://heartbeats.dk/podcast/Klubrolig8.mp3"
+      }
+    },
+    {
+      "id": 6,
+      "seriesId": 3,
+      "title": {
+        "rendered": "Ravi Kumar i studiet"
+      },
+      "meta": {
+        "audio_file": "http://heartbeats.dk/wp-content/uploads/2018/05/20180514_180000_fie-neergaard.mp3"
+      }
+    },
+    {
+      "id": 7,
+      "seriesId": 3,
+      "title": {
+        "rendered": "Varmeste & vigtigeste tracks fra 2018"
+      },
+      "meta": {
+        "audio_file": "https://heartbeats.dk/wp-content/uploads/2018/07/20180625_180000_fie-neergaard.mp3"
+      }
+    },
+    {
+      "id": 8,
+      "seriesId": 4,
+      "title": {
+        "rendered": "#1"
+      },
+      "meta": {
+        "audio_file": "https://heartbeats.dk/podcast/AcidWashed.mp3"
+      }
+    }
+  ]
+}
