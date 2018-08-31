@@ -1,5 +1,10 @@
 
-# The unofficial Heartbeats App
+# The unofficial Heartbeats App [DEPRECATED]
+
+**WARNING:** Since Heartbeats.dk no longer provides public access to their API, this project is currently not working :(
+If anyone wants to help get it back up, any help would be appreciated!
+
+---
 
 I love [Heartbeats](http://heartbeats.dk/), but listening from the website had some drawbacks - thus this desktop app was created.
 
