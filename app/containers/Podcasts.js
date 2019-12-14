@@ -133,7 +133,6 @@ class PodcastsPage extends Component {
           <List title="Episodes">
             {podcasts
               ? podcasts
-                  .reverse()
                   .map(p => (
                     <ListItem
                       key={p.id}

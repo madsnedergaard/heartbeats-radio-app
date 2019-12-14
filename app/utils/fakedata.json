@@ -6,7 +6,7 @@
     },
     {
       "id": 2,
-      "name": "Klub Rolig"
+      "name": "Alvaro og Waqar"
     },
     {
       "id": 3,
@@ -14,7 +14,7 @@
     },
     {
       "id": 4,
-      "name": "AcidWashed"
+      "name": "Future Soul"
     }
   ],
   "episodes": [
@@ -25,7 +25,7 @@
         "rendered": "Episode #1"
       },
       "meta": {
-        "audio_file": "http://heartbeats.dk/wp-content/uploads/2018/04/20180412_160000_varme-rytmer.mp3"
+        "audio_file": "https://old.heartbeats.dk/wp-content/uploads/2018/04/20180412_160000_varme-rytmer.mp3"
       }
     },
     {
@@ -35,67 +35,79 @@
         "rendered": "Episode #2"
       },
       "meta": {
-        "audio_file": "https://heartbeats.dk/wp-content/uploads/2018/06/20180614_160000_varme-rytmer.mp3"
+        "audio_file": "https://old.heartbeats.dk/wp-content/uploads/2017/04/Varme-Rytmer-2-270417.mp3"
       }
     },
     {
       "id": 3,
       "seriesId": 2,
       "title": {
-        "rendered": "Episode #6"
+        "rendered": "Episode #1 - feat. Brynjolfur"
       },
       "meta": {
-        "audio_file": "https://heartbeats.dk/podcast/Klubrolig6.mp3"
+        "audio_file": "https://old.heartbeats.dk/wp-content/uploads/2017/05/3-Alvaro-og-Waqar-Guest.-Brynjolfur.mp3"
       }
     },
     {
       "id": 4,
       "seriesId": 2,
       "title": {
-        "rendered": "Episode #7"
+        "rendered": "Episode #2 - feat. David Garset"
       },
       "meta": {
-        "audio_file": "https://heartbeats.dk/podcast/Klubrolig7.mp3"
+        "audio_file": "https://old.heartbeats.dk/wp-content/uploads/2017/05/alvaro-og-waqar-4_2.mp3"
       }
     },
     {
       "id": 5,
       "seriesId": 2,
       "title": {
-        "rendered": "Episode #8"
+        "rendered": "Episode #3 - Strictly House Friday"
       },
       "meta": {
-        "audio_file": "https://heartbeats.dk/podcast/Klubrolig8.mp3"
+        "audio_file": "https://old.heartbeats.dk/wp-content/uploads/2017/07/170707_Alvaro-og-Waqar9.mp3"
       }
     },
     {
       "id": 6,
       "seriesId": 3,
       "title": {
-        "rendered": "Ravi Kumar i studiet"
+        "rendered": "Chief Keef-tema med Kristian Karl"
       },
       "meta": {
-        "audio_file": "http://heartbeats.dk/wp-content/uploads/2018/05/20180514_180000_fie-neergaard.mp3"
+        "audio_file": "https://old.heartbeats.dk/wp-content/uploads/2018/08/20180827_180000_fie-neergaard-edit.mp3"
+
+
       }
     },
     {
       "id": 7,
       "seriesId": 3,
       "title": {
-        "rendered": "Varmeste & vigtigeste tracks fra 2018"
+        "rendered": "Ugens gæst er hiphop-produceren Chanelbigs"
       },
       "meta": {
-        "audio_file": "https://heartbeats.dk/wp-content/uploads/2018/07/20180625_180000_fie-neergaard.mp3"
+        "audio_file": "https://old.heartbeats.dk/wp-content/uploads/2018/09/20180903_180000_fie-neergaard.mp3"
       }
     },
     {
       "id": 8,
       "seriesId": 4,
       "title": {
-        "rendered": "#1"
+        "rendered": "Sydafrikas største hiphopstjerner"
       },
       "meta": {
-        "audio_file": "https://heartbeats.dk/podcast/AcidWashed.mp3"
+        "audio_file": "https://episodes.castos.com/heartbeatsdk/Future-Soul-311019.mp3"
+      }
+    },
+    {
+      "id": 9,
+      "seriesId": 4,
+      "title": {
+        "rendered": "De førende urban-talenter fra 2019"
+      },
+      "meta": {
+        "audio_file": "https://episodes.castos.com/heartbeatsdk/Future-Sound-4-12.mp3"
       }
     }
   ]
